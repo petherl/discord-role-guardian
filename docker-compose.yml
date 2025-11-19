@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  # Discord Role Guardian Bot Service
+  discord-bot:
+    # Use pre-built image from GitHub Container Registry
+    # image: ghcr.io/nayandas69/discord-role-guardian:latest
+    
+    # Alternatively, build from local Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: discord-role-guardian
+    
+    # Restart policy for production reliability
+    restart: unless-stopped
+    
+    # Environment variables (REQUIRED - users must set these)
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - CLIENT_ID=${CLIENT_ID}
+      - NODE_ENV=production
+    
+    # Mount volume for persistent data storage (config.json)
+    volumes:
+      - ./bot-data:/app/src/data
+    
+    # Resource limits for production stability
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Health check configuration
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('Bot is healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

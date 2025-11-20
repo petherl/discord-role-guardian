@@ -16,7 +16,7 @@ node_modules/
 config.json
 
 # Docker
-.dockerignore
+# .dockerignore
 
 # Logs
 logs/

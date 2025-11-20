@@ -1,0 +1,64 @@
+# Node modules - will be installed in container
+node_modules
+npm-debug.log
+
+# Git files
+.git
+.gitignore
+.github
+
+# Documentation
+*.md
+!README.md
+docs/
+
+Scripts for duplicate commands removed.
+scripts/
+
+# Development files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Environment files (will be provided via Railway/Docker)
+.env
+.env.local
+.env.*.local
+
+# Test files
+test/
+tests/
+*.test.js
+*.spec.js
+coverage/
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Railway specific
+railway.json
+
+# Docker files (not needed inside container)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Data directory (will be mounted as volume)
+data/
+bot-data/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/

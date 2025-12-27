@@ -70,6 +70,18 @@ node scripts/cleanup-duplicate-commands.js
 
 ---
 
+## Usage remove.cjs
+
+**Purpose:**
+- This script removes all global slash commands for the bot.
+- Useful for resetting commands or cleaning up before re-deployment.
+- Make sure to replace `'your-client-id-here'` and `'your-bot-token-here'` with your actual Discord application client ID and bot token before running.
+
+**Usage:**
+```bash
+node scripts/remove.cjs
+```
+
 ## Adding New Scripts
 
 When adding new scripts to this folder:
